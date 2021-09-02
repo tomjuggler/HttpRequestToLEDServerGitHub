@@ -1,6 +1,9 @@
 /**
-   Based on BasicHTTPClient.ino
-
+ * Code to check Flask api and see if my resume site has had any visits
+ * Turns LED on for a second if there was a visitor since the last check
+ * Based on BasicHTTPClient.ino
+ * Additional code by Tom Hastings 
+ * Blog post: https://www.circusscientist.com/2021/08/18/i-made-an-led-indicator-for-my-portfolio-site/
 */
 
 #define led D4 //built in LED on my D1 mini
@@ -76,12 +79,12 @@ void loop() {
             Serial.print("saving visitor number: ");
             Serial.println(visits);
             EEPROM.write(eepromAddr, visits);
-            delay(5000); //why we have to have this here or it doesn't work?
+            delay(5000); 
           } else {
             Serial.print("not yet: ");
             Serial.println(payload);
             digitalWrite(led, HIGH);
-            delay(10); //doesn't work without this? why?
+            delay(10); 
           }
           
         }
